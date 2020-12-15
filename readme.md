@@ -47,7 +47,7 @@ add_executable(Demo demo.cpp)
 # add_executable 的作用是把 demo.cpp 生成为 Demo 这个可执行文件。
 ```
 
-之后可以运行 `cmake -G"MinGW Makefiles"` 来运行 cmake 了。
+之后可以运行 `cmake . -G"MinGW Makefiles"` 来运行 cmake 了。
 因为是在 Windows+MinGW+CMake 的配置环境下，所以需要加 Generate flag。（不然默认 NMake）
 
 成功了，不过提示要求添加 CMake minimum version ，更改 `CMakeLists.txt` 如下：
@@ -71,13 +71,7 @@ add_executable(Demo ${SRCS})
 然后运行一下 `make` 就可以了，显示如下：
 
 ```plain
-PS D:\Dev> cmake -G"MinGW Makefiles"
-CMake Warning:
-  No source or binary directory provided.  Both will be assumed to be the
-  same as the current working directory, but note that this warning will 
-  become a fatal error in future CMake releases.
-
-
+PS D:\Dev> cmake . -G"MinGW Makefiles"
 -- Configuring done
 -- Generating done
 -- Build files have been written to: D:/Dev
@@ -157,7 +151,7 @@ add_executable(Demo ${SRCS})
 然后执行命令，大成功。
 
 ```plain
-PS D:\Dev> cmake .
+PS D:\Dev> cmake . -G"MinGW Makefiles"
 -- Configuring done
 -- Generating done
 -- Build files have been written to: D:/Dev
@@ -332,10 +326,10 @@ target_link_libraries(Demo ${EXTRA_LIBS})
 	CMakeLists.txt
 ```
 
-然后开始跑。 `cmake ./ -G"MinGW Makefiles"` + `make` 就 OK 了。现在输出看起来像：
+然后开始跑。 `cmake . -G"MinGW Makefiles"` + `make` 就 OK 了。现在输出看起来像：
 
 ```plain
-PS D:\Dev> cmake ./ -G"MinGW Makefiles"
+PS D:\Dev> cmake . -G"MinGW Makefiles"
 OFF
 -- Configuring done
 -- Generating done
@@ -350,7 +344,7 @@ PS D:\Dev> ./demo 2 10
 和这样：
 
 ```plain
-PS D:\Dev> cmake ./ -D USE_MYMATH=ON
+PS D:\Dev> cmake . -D USE_MYMATH=ON
 ON
 -- Configuring done
 -- Generating done
