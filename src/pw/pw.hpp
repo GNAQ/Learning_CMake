@@ -1,0 +1,1 @@
+extern double Calc_Power(char *base, char *pw);
